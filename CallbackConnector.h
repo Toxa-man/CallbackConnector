@@ -1,7 +1,7 @@
 #ifndef CALLBACKCONNECTOR_H
 #define CALLBACKCONNECTOR_H
 #include <functional>
-
+namespace cbc{
 namespace Details {
 
 template <std::size_t Tag, typename T, typename Ret, typename... Args>
@@ -95,22 +95,23 @@ auto const_instantiate(T* t, Func ptr)
 
 
 template <std::size_t tag = 0, typename T, typename Ret, typename... Args>
-auto obtaintConnector(T* t, Ret(T::*ptr)(Args...))
+auto obtain_connector(T* t, Ret(T::*ptr)(Args...))
 {
     return Details::FuncMemberWrapper<tag, T, Ret, Args...>::instantiate(t, ptr);
 
 }
 
 template <std::size_t tag = 0, typename T, typename Ret, typename... Args>
-auto obtaintConnector(T* t, Ret(T::*ptr)(Args...) const)
+auto obtain_connector(T* t, Ret(T::*ptr)(Args...) const)
 {
     return Details::FuncMemberWrapper<tag, T, Ret, Args...>::instantiate(t, ptr);
 }
 
 template <typename Functor>
-auto obtaintConnector(Functor functor)
+auto obtain_connector(Functor functor)
 {
     return Details::deducer(std::move(functor), &Functor::operator());
 }
+} //end of cbc scope
 
 #endif // CALLBACKCONNECTOR_H
