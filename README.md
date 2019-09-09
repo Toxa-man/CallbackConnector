@@ -1,4 +1,4 @@
-# CallbackConnector  
+# Callback Connector  
 ## Description
 Tiny **header-only** library that allows passing member function and lambdas as C-Api callbacks  
 ## Usage  
