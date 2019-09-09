@@ -1,9 +1,6 @@
 #include <iostream>
 #include "CallbackConnector.h"
 
-using namespace std;
-
-
 using cb_t = void(*)();
 
 void c_api_func_with_callback(cb_t cb)
