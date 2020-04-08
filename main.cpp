@@ -69,8 +69,14 @@ int main()
     auto virtual_ptr = obtain_connector(&child, &Foo::some_virtual);
     c_api_func_with_callback(virtual_ptr);
 
+    virtual_ptr = obtain_connector(&obj, &Foo::some_virtual);
+    c_api_func_with_callback(virtual_ptr);
+
     // const virtual member function
     auto const_virtual_ptr = obtain_connector(&child, &Foo::const_virtual);
+    c_api_func_with_callback(const_virtual_ptr);
+
+    const_virtual_ptr = obtain_connector(&obj, &Foo::const_virtual);
     c_api_func_with_callback(const_virtual_ptr);
 
     // inherited non-virtual member function
